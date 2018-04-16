@@ -1,0 +1,70 @@
+
+-Instalar Docker
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
+
+-Tutorial ROS en Docker
+http://wiki.ros.org/docker/Tutorials/Docker
+-Tutorial instalar ROS
+http://wiki.ros.org/kinetic/Installation/Ubuntu
+
+-Instalar Java
+https://www.digitalocean.com/community/tutorials/como-instalar-java-con-apt-get-en-ubuntu-16-04-es
+
+-Instalar Kapua
+https://www.eclipse.org/kapua/getting-started.php
+
+docker run -td --name kapua-sql -p 8181:8181 -p 3306:3306 kapua/kapua-sql:0.3.2
+docker run -td --name kapua-elasticsearch -p 9200:9200 -p 9300:9300 elasticsearch:5.4.0 -Ecluster.name=kapua-datastore -Ediscovery.type=single-node -Etransport.host=_site_ -Etransport.ping_schedule=-1 -Etransport.tcp.connect_timeout=30s
+docker run -td --name kapua-broker --link kapua-sql:db --link kapua-elasticsearch:es --env commons.db.schema.update=true -p 1883:1883 -p 61614:61614 kapua/kapua-broker:0.3.2
+docker run -td --name kapua-console --link kapua-sql:db --link kapua-broker:broker --link kapua-elasticsearch:es --env commons.db.schema.update=true -p 8080:8080 kapua/kapua-console:0.3.2
+docker run -td --name kapua-api --link kapua-sql:db --link kapua-broker:broker --link kapua-elasticsearch:es --env commons.db.schema.update=true -p 8081:8080 kapua/kapua-api:0.3.2
+
+Web Console
+http://127.0.0.1:8080/
+Username: kapua-sys
+Password: kapua-password
+
+Message Broker
+tcp://127.0.0.1:1883/
+Username: kapua-broker
+Password: kapua-password
+
+RESTful APIs
+http://127.0.0.1:8081/doc
+Username: kapua-sys
+Password: kapua-password
+
+* Instala ROS en una máquina virtual ubuntu.
+
+* Instala la aplicación andruino en tu móvil. https://github.com/andruino/andruinoR2/blob/master/android/andruino_driver/bin/andruino_driver.apk
+
+* Instala la aplicación andruino en tu Arduino https://github.com/andruino/andruinoR2/blob/master/arduino/andruino_driver_ROS_firmware.ino
+
+* Conecta Arduino a tu Android.
+
+* Ejecuta los comandos de ROS necesarios para visualizar enel PC la imagen capturada por tu pantalla en el móvil
+
+* Ejecuta los comandos de ROS necesarios para representar numéricamente los valores del giróscopo del móvil.
+
+* Ejecuta los comandos de ROS necesarios para representar gráficamente los valores del giróscopo del móvil.
+
+* Ejecuta los comandos de ROS necesarios para representar numéricamente los valores del sensor de distancia (central) del Arduino.
+
+* Ejecuta los comandos de ROS necesarios para representar gráficamente los valores del ssensor de distancia (central) del Arduino.
+
+* Represente gráficamente la estructura de nodos y topics
+
+  162  rostopic list
+  163  apt-cache search ros-kinetic
+  164  rosdep init
+  165  rosdep update
+  166  echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+  167  source ~/.bashrc
+  168  rostopic list
+  169  ifconfig
+  170  ping 192.168.1.114 (Hacemos PING con el Arduino)
+  171  roscore & (Arrancamos)
+  172  rostopic list (Vemos los sensores)
+  173  rosecho /andruino114/imu
+  174  rostopic echo /andruino114/imu (arrancamos el acelerometro)
+  175  history
