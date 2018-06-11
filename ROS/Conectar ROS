@@ -1,0 +1,10 @@
+COMO CONECTAR ANDRUINO Y ROS
+
+-Nos conectamos con Wifi con el móvil y el PC (ROS).
+-Que se comuniquen entre las máquinas, que hagan PING entre ellas.
+-En el Andruino quitamos localhost y ponemos la IP del PC (ROS).
+-Arrancamos ROS. # roscore &
+-Vemos la lista. # rostopic list
+-Seleccionamos de la lista. # rostopic echo /andruino114/......
+
+

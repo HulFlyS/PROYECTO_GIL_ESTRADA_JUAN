@@ -1,0 +1,14 @@
+https://mosquitto.org/
+https://test.mosquitto.org/
+https://www.eclipse.org/paho/
+http://mqtt.org/
+https://www.python.org/
+https://docs.python.org/3/
+http://mysql-python.sourceforge.net
+https://dev.mysql.com/
+https://matplotlib.org/
+https://stackoverflow.com/
+https://www.w3schools.com/
+https://www.digitalocean.com/
+http://www.ev3dev.org
+https://www.codecademy.com/es
